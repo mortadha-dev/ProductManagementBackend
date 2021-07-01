@@ -23,7 +23,7 @@ public class ProductController {
     private final ProductRepository productRepository;
     private final  ProductService productService;
     private final CategoryRepository categoryRepository;
-
+//we are oukay
 
     @Autowired
     ProductController(ProductService productService, CategoryRepository categoryRepository, ProductRepository productRepository)
