@@ -18,10 +18,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 public class ProductManagementApplicationTests {
 
-	public CategoryService categoryService ;
-	public ProductService productService ;
-	public CategoryRepository categoryRepository ;
-	public ProductRepository productRepository ;
+	public final CategoryService categoryService ;
+	public final ProductService productService ;
+	public final CategoryRepository categoryRepository ;
+	public final ProductRepository productRepository ;
 	@Autowired
 	public ProductManagementApplicationTests (CategoryService categoryService , ProductService productService , CategoryRepository categoryRepository, ProductRepository productRepository){
 		this.categoryService=categoryService ;

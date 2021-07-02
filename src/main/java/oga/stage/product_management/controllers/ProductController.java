@@ -88,6 +88,7 @@ public class ProductController {
         return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bais));
     }
 
+
     @GetMapping("/exportexcel/{catid}")
     public ResponseEntity<InputStreamResource> exportTermsExcel(@PathVariable("catid") long catid) throws IOException {
         List<Product> products = productRepository.showProductsInCat(catid);

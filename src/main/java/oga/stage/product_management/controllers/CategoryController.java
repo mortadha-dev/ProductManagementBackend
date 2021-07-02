@@ -1,6 +1,8 @@
 package oga.stage.product_management.controllers;
 
 import oga.stage.product_management.entities.Category;
+import oga.stage.product_management.entities.Product;
+import oga.stage.product_management.exceptions.ResourceNotFoundException;
 import oga.stage.product_management.repositories.CategoryRepository;
 import oga.stage.product_management.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ public class CategoryController {
     private final CategoryService categoryService ;
 
     private final CategoryRepository categoryRepository ;
+
 
 
     @Autowired
@@ -50,17 +53,16 @@ public class CategoryController {
 
     @PutMapping("/updatecategory/{id}")
     public void updateCategory(@RequestBody Category category, @PathVariable("id")long id){
-        var oui= categoryRepository.findById(id).isPresent() ;
-        if (oui)
-        {
-            var category1 =new Category();
+        Category category1 = categoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("product not found with id :" + id));
+
             category1.setDateCreation(category1.getDateCreation());
             category1.setQuantity(category.getQuantity());
             category1.setNom(category.getNom());
+
             categoryService.updateCategory(category1);
         }
 
 
+
     }
 
-}
